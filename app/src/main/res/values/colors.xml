@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary and Secondary Colors -->
+    <color name="colorPrimary">#4CAF50</color> <!-- Green -->
+    <color name="colorPrimaryVariant">#388E3C</color> <!-- Darker Green -->
+    <color name="colorSecondary">#03A9F4</color> <!-- Blue -->
+
+    <!-- Accent Color -->
+    <color name="colorAccent">#FFC107</color> <!-- Amber -->
+
+    <!-- Background Colors -->
+    <color name="backgroundLight">#F5F5F5</color> <!-- Light Gray Background -->
+    <color name="backgroundDark">#121212</color> <!-- Dark Background for Dark Mode -->
+
+    <!-- Text Colors -->
+    <color name="textPrimary">#212121</color> <!-- Dark Gray for Primary Text -->
+    <color name="textSecondary">#757575</color> <!-- Lighter Gray for Secondary Text -->
+    <color name="textPrimaryDark">#FFFFFF</color> <!-- White for Primary Text in Dark Mode -->
+    <color name="textSecondaryDark">#BDBDBD</color> <!-- Light Gray for Secondary Text in Dark Mode -->
+
+    <!-- Icon Tint Colors -->
+    <color name="iconTint">#FFFFFF</color> <!-- White for Icons -->
+
+    <!-- Card Colors -->
+    <color name="cardBackground">#FFFFFF</color> <!-- White Background for Cards -->
+    <color name="cardBackgroundDark">#1E1E1E</color> <!-- Dark Background for Cards in Dark Mode -->
+    <color name="cardBorder">#E0E0E0</color> <!-- Light Grey for Card Border -->
+    <color name="cardBorderDark">#333333</color> <!-- Dark Grey for Card Border in Dark Mode -->
+
+    <!-- Status Bar Colors -->
+    <color name="statusBarColorLight">#388E3C</color> <!-- Darker Green for Status Bar in Light Mode -->
+    <color name="statusBarColorDark">#000000</color> <!-- Black for Status Bar in Dark Mode -->
+</resources>
