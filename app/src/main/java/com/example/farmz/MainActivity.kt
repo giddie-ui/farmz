@@ -35,9 +35,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             FarmzTheme {
                 val navController = rememberNavController()
-                NavHost(navController, startDestination = "login") { // Start with the login screen
+                NavHost(navController, startDestination = "login") {
                     composable("login") { LoginScreen(navController) }
-                    composable("signup") { SignUpScreen(navController) } // New signup screen
+                    composable("signup") { SignUpScreen(navController) }
                     composable("home") { HomeScreen(navController) }
                     composable("breedSelection") { BreedSelectionScreen() }
                     composable("calving") { CalvingScreen() }
@@ -91,9 +91,8 @@ fun SignUpScreen(navController: NavHostController) {
         Button(
             onClick = {
                 if (email.isNotEmpty() && password.isNotEmpty()) {
-                    // Implement signup logic here
                     Toast.makeText(context, "Account created successfully!", Toast.LENGTH_SHORT).show()
-                    navController.navigate("home") // Navigate to home screen on successful signup
+                    navController.navigate("home")
                 } else {
                     Toast.makeText(context, "Please enter both email and password", Toast.LENGTH_SHORT).show()
                 }
@@ -150,8 +149,7 @@ fun LoginScreen(navController: NavHostController) {
         Button(
             onClick = {
                 if (email.isNotEmpty() && password.isNotEmpty()) {
-                    // Implement authentication logic here
-                    navController.navigate("home") // Navigate to home screen on successful login
+                    navController.navigate("home")
                 } else {
                     Toast.makeText(context, "Please enter both email and password", Toast.LENGTH_SHORT).show()
                 }
@@ -172,7 +170,7 @@ fun LoginScreen(navController: NavHostController) {
             modifier = Modifier
                 .padding(top = 16.dp)
                 .clickable {
-                    navController.navigate("signup") // Navigate to the signup screen
+                    navController.navigate("signup")
                 }
         )
     }
@@ -296,16 +294,16 @@ fun CardItem(title: String, onClick: (() -> Unit)? = null, modifier: Modifier = 
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.weight(1f)) // Pushes the image to the center
+                Spacer(modifier = Modifier.weight(1f))
                 Image(
                     painter = painterResource(id = imageResId),
                     contentDescription = "$title Image",
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(100.dp) // Adjust height as needed
+                        .height(100.dp)
                         .padding(8.dp)
                 )
-                Spacer(modifier = Modifier.weight(1f)) // Pushes the text to the bottom
+                Spacer(modifier = Modifier.weight(1f))
                 Text(
                     text = title,
                     textAlign = TextAlign.Center,
@@ -458,7 +456,7 @@ fun HealthScreen() {
     var symptoms by remember { mutableStateOf("") }
     var suggestions by remember { mutableStateOf<String?>(null) }
 
-    // Sample data for demonstration
+
     val symptomSuggestions = mapOf(
         "cough" to "Possible cold or respiratory infection. Monitor closely and consult a vet if symptoms persist.",
         "fever" to "Possible infection or disease. Ensure hydration and contact a vet.",
@@ -466,7 +464,7 @@ fun HealthScreen() {
         "loss of appetite" to "Possible health issue. Check for other symptoms and consult a vet."
     )
 
-    // Function to check symptoms
+
     fun checkSymptoms() {
         suggestions = symptomSuggestions.filterKeys { it in symptoms.split(", ") }
             .values
