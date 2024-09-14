@@ -19,8 +19,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -31,6 +33,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -448,34 +451,44 @@ fun BreedSelectionScreen() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(bottom = 64.dp),
+                    .padding(top = 64.dp)  // Space at the top for the title
+                    .padding(bottom = 64.dp), // Ensure there is space at the bottom
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                // TextField styling without custom colors
                 TextField(
                     value = breedName,
                     onValueChange = { breedName = it },
                     label = { Text("Breed Name") },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(8.dp))
+                        .padding(horizontal = 16.dp, vertical = 12.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 TextField(
                     value = healthCondition,
                     onValueChange = { healthCondition = it },
                     label = { Text("Health Condition") },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(8.dp))
+                        .padding(horizontal = 16.dp, vertical = 12.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 TextField(
                     value = age,
                     onValueChange = { age = it },
                     label = { Text("Age") },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(8.dp))
+                        .padding(horizontal = 16.dp, vertical = 12.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
@@ -505,24 +518,16 @@ fun BreedSelectionScreen() {
                     Text("Suggested breed to inseminate: $it", style = MaterialTheme.typography.bodyLarge)
                 }
             }
-            Image(
-                painter = painterResource(id = R.drawable.breed),
-                contentDescription = "Breed Image",
-                modifier = Modifier
-                    .size(80.dp)
-                    .align(Alignment.Center)
-            )
             Text(
                 text = "Breed Selection",
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .padding(bottom = 16.dp)
+                    .align(Alignment.TopCenter)
+                    .padding(top = 16.dp)
             )
         }
     }
 }
-
 
 
 @Composable
@@ -537,40 +542,40 @@ fun CalvingScreen() {
         "12-24" to "Transition feed and forages"
     )
 
-    Card(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
-        shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+            .background(MaterialTheme.colorScheme.background) // Set background color
+            .padding(16.dp)
     ) {
-        Column(
+        Card(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxSize(),
+            shape = RoundedCornerShape(8.dp),
+            elevation = CardDefaults.cardElevation(4.dp)
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.calving),
-                contentDescription = "Calving Image",
+            Column(
                 modifier = Modifier
-                    .size(80.dp)
-                    .align(Alignment.CenterHorizontally)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Table(
-                columnHeaders = listOf("Month", "Feed/Supplement"),
-                rows = feedsAndSupplements
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = "Feeds and Supplements for Cow Calves",
-                style = MaterialTheme.typography.headlineMedium
-            )
+                    .fillMaxSize()
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState()), // Handle vertical scrolling
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Feeds and Supplements for Cow Calves",
+                    style = MaterialTheme.typography.headlineMedium,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+                Table(
+                    columnHeaders = listOf("Month", "Feed/Supplement"),
+                    rows = feedsAndSupplements
+                )
+            }
         }
     }
 }
+
 
 @Composable
 fun GestationScreen() {
@@ -583,40 +588,41 @@ fun GestationScreen() {
         "7-9" to "Forage, grain mix, and minerals"
     )
 
-    Card(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+    // Full-screen background
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
     ) {
-        Column(
+        Card(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally
+            shape = RoundedCornerShape(8.dp),
+            elevation = CardDefaults.cardElevation(4.dp)
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.gestation),
-                contentDescription = "Gestation Image",
+            Column(
                 modifier = Modifier
-                    .size(80.dp)
-                    .align(Alignment.CenterHorizontally)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Table(
-                columnHeaders = listOf("Month", "Feed/Supplement"),
-                rows = feedsAndSupplements
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = "Feeds and Supplements for Gestation",
-                style = MaterialTheme.typography.headlineMedium
-            )
+                    .fillMaxSize()
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.Top, // Align content to the top
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Feeds and Supplements for Gestation",
+                    style = MaterialTheme.typography.headlineMedium,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Table(
+                    columnHeaders = listOf("Month", "Feed/Supplement"),
+                    rows = feedsAndSupplements
+                )
+            }
         }
     }
 }
+
+
 @Composable
 fun HealthScreen() {
     var tipsExpanded by remember { mutableStateOf(false) }

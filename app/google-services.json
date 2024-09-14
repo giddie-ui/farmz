@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "853075684081",
+    "project_id": "farmz-c5054",
+    "storage_bucket": "farmz-c5054.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853075684081:android:4f73f02513f56dcae25750",
+        "android_client_info": {
+          "package_name": "com.example.farmz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGAqoni5M8bPLtq7C0apHx_Q-H7JtqTIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
